@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=Poppins:wght@500&display=swap');
+
+:root{
+    --white: #FFFFFF;
+    --black: #000000;
+    --dark-orange: #412D1F;
+    --fire-orange: #F6AD78;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+body{
+    background: var(--dark-orange);
+}
+
+header{
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+}
+
+header img{
+    width: 50px;
+
+    cursor: pointer;
+}
+
+header #user-icon{
+    border-radius: 10px;
+}
+
+main{
+    padding: 25px;
+}
+
+main #todos-top{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main #todos-top h1{
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 25px;
+}
+
+main #todos-top button{
+    background: var(--fire-orange);
+    border-radius: 10px;
+
+    font-family: 'Montserrat';
+    font-size: 14px;
+
+    width: 100px;
+}
+
+main #todos{
+    background: var(--fire-orange);
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+main #todos #todo{
+    display: flex;
+}
+
+main #todos #todo div{
+    background: var(--white);
+    border-radius: 100%;
+
+    margin-right: 10px;
+
+    width: 20px;
+    height: 20px;
+}
+
+main #todos #todo p{
+    font-family: 'Poppins';
+    font-size: 16;
+    text-decoration: line-through;
+}
+
+#bottom-panel{
+    position: fixed;
+    bottom: 0;
+
+    width: 100vw;
+    height: 100px;
+
+    background: var(--fire-orange);
+
+    border-radius: 25px 25px 0 0;
+}
+
+#bottom-panel #bottom-buttons{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+#bottom-panel #bottom-buttons #bottom-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#bottom-panel #bottom-buttons #bottom-button img{
+    width: 35px;
+    filter: invert(100%);
+}
+
+#bottom-panel #bottom-buttons #bottom-button p{
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+#right-panel{
+    display: none;
+}
+
+@media (min-width: 768px){
+    main #todos{
+        width: 500px;
+    }
+
+    main #todos-top{
+        width: 530px;
+    }
+
+    #right-panel{
+        background: var(--fire-orange);
+        display: flex;
+        position: fixed;
+
+        align-items: center;
+
+        padding: 15px;
+
+        border-radius: 10px 0 0 10px;
+
+        right: 0;
+    }
+
+    #right-panel #right-buttons #right-button{
+        margin-bottom: 10px;
+        
+        cursor: pointer;
+    }
+
+    #right-panel #right-buttons #right-button:last-child{
+        margin: 0;
+    }
+    #right-panel #right-buttons #right-button img{
+        width: 40px;
+        filter: invert(100%);
+    }
+
+    
+
+    #bottom-panel{
+        display: none;
+    }
+}
