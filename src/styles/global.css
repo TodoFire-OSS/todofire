@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=Poppins:wght@500&display=swap');
 
-:root{
+:root {
     --white: #FFFFFF;
     --black: #000000;
     --dark-orange: #412D1F;
     --fire-orange: #F6AD78;
 }
 
-*{
+* {
+    overflow-x: hidden;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     color: #FFFFFF;
@@ -16,43 +18,43 @@
     text-decoration: none;
 }
 
-body{
+body {
     background: var(--dark-orange);
 }
 
-header{
+header {
     display: flex;
     padding: 25px;
     justify-content: space-between;
 }
 
-header img{
+header img {
     width: 50px;
 
     cursor: pointer;
 }
 
-header #user-icon{
+header #user-icon {
     border-radius: 10px;
 }
 
-main{
+main {
     padding: 25px;
 }
 
-main #todos-top{
+main #todos-top {
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
 }
 
-main #todos-top h1{
+main #todos-top h1 {
     font-family: 'Montserrat';
     font-weight: 800;
     font-size: 25px;
 }
 
-main #todos-top button{
+main #todos-top button {
     background: var(--fire-orange);
     border-radius: 10px;
 
@@ -62,34 +64,55 @@ main #todos-top button{
     width: 100px;
 }
 
-main #todos{
+main #todos {
     background: var(--fire-orange);
     border-radius: 10px;
-
+    border: solid rgb(255, 255, 255) 2px;
     padding: 15px;
 }
 
-main #todos #todo{
+main #todos .todo {
     display: flex;
+    align-items: flex-start;
 }
 
-main #todos #todo div{
-    background: var(--white);
+main #todos .todo+.todo {
+    margin-top: 15px;
+}
+
+main #todos .todo .done-mark {
+    background: white;
     border-radius: 100%;
-
+    margin-top: 2.5px;
     margin-right: 10px;
-
+    border: 0;
+    outline: 0;
+    min-width: 20px;
+    min-height: 20px;
     width: 20px;
     height: 20px;
+
+    background-color: white;
+    /* border-radius: 50%; */
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+
+    outline: none;
+    cursor: pointer;
 }
 
-main #todos #todo p{
+main #todos .todo .done-mark:checked {
+    background-color: rgb(71, 71, 71);
+}
+
+main #todos .todo p {
     font-family: 'Poppins';
     font-size: 16;
     text-decoration: line-through;
 }
 
-#bottom-panel{
+#bottom-panel {
     position: fixed;
     bottom: 0;
 
@@ -101,7 +124,7 @@ main #todos #todo p{
     border-radius: 25px 25px 0 0;
 }
 
-#bottom-panel #bottom-buttons{
+#bottom-panel #bottom-buttons {
     display: flex;
     height: 100%;
     align-items: center;
@@ -109,68 +132,104 @@ main #todos #todo p{
     padding: 0 50px;
 }
 
-#bottom-panel #bottom-buttons #bottom-button{
+#bottom-panel #bottom-buttons #bottom-button {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#bottom-panel #bottom-buttons #bottom-button img{
+#bottom-panel #bottom-buttons #bottom-button img {
     width: 35px;
     filter: invert(100%);
 }
 
-#bottom-panel #bottom-buttons #bottom-button p{
+#bottom-panel #bottom-buttons #bottom-button p {
     font-family: 'Montserrat';
     font-weight: 500;
     font-size: 18px;
     margin-top: 5px;
 }
 
-#right-panel{
+#right-panel {
     display: none;
 }
 
-@media (min-width: 768px){
-    main #todos{
+@media (min-width: 768px) {
+    main #todos .todo {
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        min-height: 80px;
+        /* min-width: 300px; */
+        /* min-height: 90px; */
+        background: var(--fire-orange);
+        border-radius: 10px;
+        border: solid rgb(255, 255, 255) 2px;
+        padding: 15px;
+    }
+
+    #todos .todo+.todo {
+        margin-top: 0 !important;
+        /* margin-left: 15px !important; */
+    }
+
+    main #todos {
+        padding: 0;
+        width: 93vw !important;
+        /* height: 500px; */
+        background: transparent;
+        border-radius: 0;
+        border: 0;
+        display: flex;
+        flex: row !important;
+        /* flex: 1 1 100px; */
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+
+    main #todos {
         width: 500px;
     }
 
-    main #todos-top{
-        width: 530px;
+    main #todos-top {
+        width: 100vw;
+        padding-right: 50px;
     }
 
-    #right-panel{
+    #right-panel {
         background: var(--fire-orange);
         display: flex;
-        position: fixed;
-
+        position: absolute;
+        z-index: 9999;
         align-items: center;
 
         padding: 15px;
 
         border-radius: 10px 0 0 10px;
-
+        top: 50%;
+        transform: translateY(-50%);
         right: 0;
     }
 
-    #right-panel #right-buttons #right-button{
+    #right-panel #right-buttons #right-button {
         margin-bottom: 10px;
-        
+
         cursor: pointer;
     }
 
-    #right-panel #right-buttons #right-button:last-child{
+    #right-panel #right-buttons #right-button:last-child {
         margin: 0;
     }
-    #right-panel #right-buttons #right-button img{
+
+    #right-panel #right-buttons #right-button img {
         width: 40px;
         filter: invert(100%);
     }
 
-    
 
-    #bottom-panel{
+
+    #bottom-panel {
         display: none;
     }
 }

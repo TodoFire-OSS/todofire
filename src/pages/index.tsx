@@ -1,5 +1,6 @@
 import { BottomButton } from "../components/BottomButton"
 import { RightButton } from "../components/RightButton"
+import { Todo } from "../components/Todo"
 
 import { useSession, signIn, signOut } from 'next-auth/client'
 
@@ -21,10 +22,11 @@ function Main(){
                 </div>
                 
                 <div id="todos">
-                    <div id="todo">
-                        <div id="done-mark" />
-                        <p>Wash the house</p>
-                    </div>
+                    <Todo checked={true} title="Make a Website"/>
+                    <Todo checked={false} title="Cadê o Lolo"/>
+                    <Todo checked={true} title="Dezoitou, dezoitou do David"/>
+                    <Todo checked={false} title="Lavar a maconha na torneira da casa do Nego"/>
+                    <Todo checked={true} title="Wash the house"/>
                 </div>
             </main>
 
