@@ -12,7 +12,7 @@ const fetcher = (url: string) => fetch(url).then(res => res.json())
 function Main(){
     const [session] = useSession()
 
-    const getTodos = () => {
+    const GetTodos = () => {
         const { data } = useSWR(`/api/todos/${session?.user?.email}`, fetcher)
 
         console.log(data)
@@ -60,7 +60,7 @@ function Main(){
                     <button onClick={postTodo}>Create new</button>
                 </div>
                 
-                { session ? getTodos() : ( <h1>Not logged in</h1> ) }
+                { session ? GetTodos() : ( <h1>Not logged in</h1> ) }
 
             </main>
 
