@@ -21,7 +21,7 @@ function Todo({ checked, title }: TodoInterface){
     }
 
     return(
-        <div className="todo">
+        <div key="todo" className="todo">
             <li style={checked === true ? {textDecoration: "lineThrough"} : {textDecoration: "none"}}>{title}</li>
             <a onClick={deleteTodo} style={{marginLeft: 10, cursor: 'pointer', fontFamily: 'Poppins'}}>Delete</a>
         </div>
