@@ -27,7 +27,7 @@ function Main(){
             return(
                 data.map((todo: any) => (
                     <div id="todos">
-                        <Todo title={todo.tname} checked={todo.done} />
+                        <Todo key={todo.tid} title={todo.tname} checked={todo.done} />
                     </div>
                 ))
             )
