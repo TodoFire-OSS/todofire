@@ -4,6 +4,7 @@ import Providers from "next-auth/providers"
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const options = {
+    site: process.env.NEXTAUTH_URL,
     providers: [
         Providers.Google({
             clientId: process.env.GOOGLE_ID,

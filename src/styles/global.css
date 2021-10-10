@@ -69,10 +69,13 @@ main #todos {
     border-radius: 10px;
     border: solid rgb(255, 255, 255) 2px;
     padding: 15px;
+    
+    margin-bottom: 10px;
 }
 
 main #todos .todo {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
 }
 
@@ -80,36 +83,20 @@ main #todos .todo+.todo {
     margin-top: 15px;
 }
 
-main #todos .todo .done-mark {
-    background: white;
-    border-radius: 100%;
-    margin-top: 2.5px;
-    margin-right: 10px;
-    border: 0;
-    outline: 0;
-    min-width: 20px;
-    min-height: 20px;
-    width: 20px;
-    height: 20px;
-
-    background-color: white;
-    /* border-radius: 50%; */
-    vertical-align: middle;
-    border: 1px solid #ddd;
-    appearance: none;
-
-    outline: none;
-    cursor: pointer;
-}
-
-main #todos .todo .done-mark:checked {
-    background-color: rgb(71, 71, 71);
-}
-
-main #todos .todo p {
+main #todos .todo li {
     font-family: 'Poppins';
     font-size: 16;
     text-decoration: line-through;
+}
+
+main #todos .todo button {
+    background: var(--fire-orange);
+    border-radius: 10px;
+
+    font-family: 'Montserrat';
+    font-size: 14px;
+
+    width: 100px;
 }
 
 #bottom-panel {
