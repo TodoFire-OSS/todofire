@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 import { BottomButton } from "../components/BottomButton"
 import { RightButton } from "../components/RightButton"
 import { Todo } from "../components/Todo"
@@ -48,6 +50,10 @@ function Main(){
 
     return(
         <>
+            <Head>
+                <title>TodoFire v2</title>
+                <link rel="icon" type="image/png" href="fire.png" />
+            </Head>
             <header>
                 <img src="fire.png" alt="TodoFire" />
                 { session && <img onClick={() => signOut()} id="user-icon" src={session.user?.image!} alt="User" /> }
