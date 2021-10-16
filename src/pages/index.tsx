@@ -26,7 +26,7 @@ function Main(){
         if(data != undefined){
             return(
                 data.map((todo: any) => (
-                    <div id="todos">
+                    <div key="todos" id="todos">
                         <Todo title={todo.tname} checked={todo.done} />
                     </div>
                 ))
