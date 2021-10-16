@@ -7,15 +7,8 @@ interface TodoInterface{
 
 function Todo({ checked, title }: TodoInterface){
     async function deleteTodo(){
-        const todoName = document.querySelector('p')?.innerText
+        const todoName = document.querySelector('li')?.innerText
         await axios.delete(`/api/todos`, { params: { tname: todoName } })
-
-        window.location.reload()
-    }
-
-    async function changeDone(){
-        const todoName = document.querySelector('p')?.innerText
-        await axios.put(`/api/todos`, { params: { tname: todoName } })
 
         window.location.reload()
     }
@@ -23,7 +16,7 @@ function Todo({ checked, title }: TodoInterface){
     return(
         <div key="todo" className="todo">
             <li style={checked === true ? {textDecoration: "lineThrough"} : {textDecoration: "none"}}>{title}</li>
-            <a onClick={deleteTodo} style={{marginLeft: 10, cursor: 'pointer', fontFamily: 'Poppins'}}>Delete</a>
+            <a onClick={() => deleteTodo()} style={{marginLeft: 10, cursor: 'pointer', fontFamily: 'Poppins'}}>Delete</a>
         </div>
     )
 }

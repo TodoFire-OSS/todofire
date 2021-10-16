@@ -27,5 +27,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     }
     if(req.method === 'DELETE'){
         await collection.deleteOne({ tname: req.query.tname })
+
+        return res.json({ message: `Todo ${req.query.tname} deleted.` })
     }
 }
