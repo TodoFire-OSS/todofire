@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { connectDB } from '../../../util/connectDb'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-    const db = await connectDB(process.env.MONGO_DB!)
+    const db = await connectDB(process.env.MONGODB_URI!)
     const collection = db.collection('todos')
 
     const { email } = req.query
