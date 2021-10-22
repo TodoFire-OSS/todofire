@@ -6,18 +6,19 @@ import { Todo } from "../components/Todo"
 
 import { useSession, signIn, signOut } from 'next-auth/client'
 
-import useSWR from 'swr'
+import useSWR, { useSWRConfig } from 'swr'
 import axios from 'axios'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 function Main(){
+    const { mutate } = useSWRConfig()
     const [session] = useSession()
 
     const GetTodos = () => {
-        const { data } = useSWR(`/api/todos/${session?.user?.email}`, fetcher)
+        const { data } = useSWR(`/api/todos/${session?.user?.email}`, fetcher, { refreshInterval: 350 })
 
-        console.log(data)
+        // console.log(data)
 
         if(!data){
             return(
@@ -27,9 +28,9 @@ function Main(){
 
         if(data != undefined){
             return(
-                data.map((todo: any) => (
-                    <div key="todos" id="todos">
-                        <Todo title={todo.tname} checked={todo.done} />
+                data.map((todo: any, index: any) => (
+                    <div key={data[index].tid} id="todos">
+                        <Todo id={(data[index].tid)} title={todo.tname} checked={todo.done} />
                     </div>
                 ))
             )
@@ -42,10 +43,15 @@ function Main(){
 
     const postTodo = async () => {
         const tname = window.prompt('Todo name:')
+        if (tname == null || tname.trim() === ''){
 
-        await axios.post(`/api/todos`, { tname, uemail: session?.user?.email })
+        } else {
+            await axios.post(`/api/todos`, { tname, uemail: session?.user?.email }).then((res) => {
+                mutate(`/api/todos/${session?.user?.email}`)
+    
+            })
+        }
 
-        window.location.reload()
     }
 
     return(
